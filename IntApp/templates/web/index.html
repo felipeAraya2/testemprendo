@@ -1,0 +1,55 @@
+{% extends "web/plantilla.html" %}
+
+{% load static %}
+
+{% block contenido %}
+
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Sales chart -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Cargar video</h4>
+
+                    <form class="form-horizontal form-material " action="{% url 'INDEX' %}" method="POST"
+                        onsubmit="return">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="url" class="form-control" name="txtlink" id="txtlink"
+                                placeholder="ingrese link del video formato https://youtu.be/ ">
+                            <small>copiar el link de youtube desde la pestaña compartir</small>
+                        </div>
+                        <input type="submit" value="Guardar video" class="btn btn-dark">
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">video</h4>
+
+                    <div class="row">
+                        {% for aux in mostrarvideo %}
+                        <div class="col"> <iframe width="auto" height="auto" src="{{aux.video}}"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+    
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}

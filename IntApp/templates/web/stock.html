@@ -1,0 +1,49 @@
+{% extends "web/plantilla.html" %}
+
+{% load static %}
+
+{% block contenido %}
+
+<div class="container-fluid">
+        <div class="row">
+                <div class="col-12">
+                        <div class="card">
+                                <div class="card-body">
+                                        <h4 class="card-title">Stock de productos</h4>
+                                        
+                                        <div class="table-responsive">
+                                                <table class="table">
+                                                        <thead class="thead-dark">
+                                                                <tr>
+                                                                        <th scope="col">Nombre</th>
+                                                                        <th scope="col">Categoria</th>
+                                                                        <th scope="col">Stock</th>
+
+                                                                </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                                {% for aux in lista %}
+                                                                <tr>
+                                                                        <td>{{aux.nombre}}</td>
+                                                                        <td>{{aux.categoria}}</td>
+                                                                        <td>{{aux.stock}}</td>
+
+                                                                </tr>
+                                                                {% endfor %}
+
+
+                                                        </tbody>
+                                                </table>
+                                                <div class="text-center">
+                                                        <a class="btn  btn-outline-success center" href="{% url 'EXCELSTOCK'%}">Descargar Excel </a>
+                                                </div>
+                                        </div>
+
+                                </div>
+                        </div>
+                </div>
+        </div>
+</div>
+
+{% endblock contenido %}

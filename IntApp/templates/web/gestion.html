@@ -1,0 +1,109 @@
+{% extends "web/plantilla.html" %}
+
+{% load static %}
+{% block contenido %}
+
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Container fluid  -->
+<!-- ============================================================== -->
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Start Page Content -->
+    <!-- ============================================================== -->
+    <!-- Row -->
+    <div class="row">
+        <!-- Column -->
+        <div class="col-lg-6 col-xlg-6 col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Agregar producto</h3>
+                    <form class="form-horizontal form-material " action="{% url 'GESTION' %}" method="POST" onsubmit="return validarTodo()">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="col-md-12">Nombre de producto</label>
+                            <div class="col-md-12">
+                                <input type="text" name="txtNombre" id="txtNombre"
+                                    class="form-control form-control-line" required> 
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-12">Categoría</label>
+                            <div class="col-sm-12">
+                                <select class="form-control form-control-line" name="cat" id="cat">
+                                    {% for item in categoria %}
+                                    <option>{{item.categoria}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input type="submit" value="Guardar Producto" class="btn btn-dark">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label class="col-md-12 mensaje">{{msgP}}</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Column -->
+        <!-- Column -->
+        <div class="col-lg-6 col-xlg-6 col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Agregar categoría</h3>
+                    <form class="form-horizontal form-material" action="{% url 'GESTIONCAT' %}" method="POST" onsubmit="return validarCat()">
+                    {% csrf_token %}
+
+                        <div class="form-group">
+                            <label class="col-md-12">Nombre de categoría</label>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control form-control-line" name="txtNombreCat" id="txtNombreCat" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input type="submit" value="Guardar Categoría" class="btn btn-dark">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label class="col-md-12 mensaje">{{msgC}}</label>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Column -->
+    </div>
+    <!-- Row -->
+    <!-- ============================================================== -->
+    <!-- End PAge Content -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right sidebar -->
+    <!-- ============================================================== -->
+    <!-- .right-sidebar -->
+    <!-- ============================================================== -->
+    <!-- End Right sidebar -->
+    <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Container fluid  -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- footer -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- End footer -->
+
+{% endblock contenido %}

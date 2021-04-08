@@ -1,0 +1,11 @@
+.mensaje {
+    color: #ff8686;
+
+}
+
+.menu  {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+  }
+

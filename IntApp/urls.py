@@ -15,8 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import index
+from .views import index,login, cerrar_sesion,busqueda_asig, actualizar_asig
 
 urlpatterns = [
     path('',index,name='INDEX'),
+    path('login', login, name='LOGIN'),
+    path('cerrar_sesion',cerrar_sesion, name='LOGOUT'),
+    path('buscar/<id>/',busqueda_asig,name='BUSCAR'),
+    path('modificar',actualizar_asig,name='MOD')
+
+
+    
+
 ]

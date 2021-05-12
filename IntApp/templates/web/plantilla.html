@@ -5,17 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 4 admin, bootstrap 4, css3 dashboard, bootstrap 4 dashboard, AdminWrap lite admin bootstrap 4 dashboard, frontend, responsive bootstrap 4 admin template, Xtreme admin lite design, Xtreme admin lite dashboard bootstrap 4 dashboard template">
-    <meta name="description"
-        content="Xtreme Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
-    <meta name="robots" content="noindex,nofollow">
     <title>Emprendo</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/xtreme-admin-lite/" />
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/logo.png' %}">
+    
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicon1.png' %}">
     <!-- Custom CSS -->
     <link href="{% static 'assets/libs/chartist/dist/chartist.min.css' %" rel="stylesheet">
     <!-- Custom CSS -->
@@ -92,11 +85,19 @@
                         </li>
                         <li class="sidebar-item">
                             <div class="sidebar-link  " aria-expanded="false"><i
-                                    class="mdi mdi-account-outline"></i><span class="hide-menu"></span></div>
+                                    class="mdi mdi-account-outline"></i><span class="hide-menu">{{msg}}{{current_user.username}}</span></div>
                         </li>
+
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{% url 'INDEX'%}" aria-expanded="false"><i
-                                    class="mdi mdi-view-dashboard"></i><span class="hide-menu">Inicio</span></a></li>
+                                    class="mdi mdi-video"></i><span class="hide-menu">Videos</span></a></li>
+                        {% if current_user.is_superuser %}
+                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{% url 'ASIG'%}" aria-expanded="false"><i
+                                    class="mdi mdi-book-open-variant"></i><span class="hide-menu">Asignatura</span></a></li>  
+                        
+                        {% endif %}
+
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{% url 'LOGOUT'%}" aria-expanded="false"><i
                                     class="mdi mdi-login"></i><span class="hide-menu">Cerrar Sesión</span></a></li>
@@ -166,7 +167,6 @@
     <script src="{% static 'dist/js/pages/dashboards/dashboard1.js' %}"></script>
     <script src="{% static 'assets/libs/jquery/dist/jquery.chained.min.js' %}"></script>
     <script src="{% static 'dist/js/main.js' %}"></script>
-
         <script>
         $(function() {
             $("#asig").chained("#curso");  

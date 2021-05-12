@@ -1,58 +1,57 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
 
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Inventario</title>
-  <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="{% static 'assets/css/login.css' %}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/logo-login.png' %}">
-
+  <link rel="stylesheet" href="{% static 'assets/css/login2.css' %}">
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicon1.png' %}">
+  <title>Emprendo</title>
 </head>
-
 <body>
-  <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
-    <div class="container">
-      <div class="card login-card">
-        <div class="row no-gutters">
-          <div class="col-md-5">
-            <img src="{% static 'assets/images/logoindex.png' %}" alt="login" class="login-card-img">
-          </div>
-          <div class="col-md-7">
-            <div class="card-body">
+  <div class="container-fluid">
+    <div class="row no-gutter">
+        <!-- The image half -->
+        <div class="col-md-6 d-none d-md-flex bg-image"><img src="{% static 'assets/images/logoindex.png' %}" class="col-12" alt=""></div>
 
-              <p class="login-card-description">Inicia sesión con tu cuenta</p>
-              <form action="{% url 'LOGIN' %}" method="POST">
-                {% csrf_token %}
-                <div class="form-group">
-                  <label for="txtUsuario" class="sr-only">usuario</label>
-                  <input type="text" name="txtUsuario" id="txtUsuario" class="form-control"
-                    placeholder="Nombre de usuario">
-                </div>
-                <div class="form-group mb-4">
-                  <label for="password" class="sr-only">Password</label>
-                  <input type="password" name="password" id="password" class="form-control" placeholder="***********">
-                </div>
-                <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Entrar">
-                <label class="col-md-12 mensaje">{{msg}}</label>
 
-              </form>
+        <!-- The content half -->
+        <div class="col-md-6 bg-light">
+            <div class="login d-flex align-items-center py-5">
+
+                <!-- Demo content-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-xl-7 mx-auto">
+                            <h3 class="display-4">Inicia sesión con tu cuenta</h3>
+                            <form action="{% url 'LOGIN' %}" method="POST"> 
+                            {% csrf_token %}
+                                <div class="form-group mb-3">
+                                    <input name="txtUsuario" id="txtUsuario" type="text" placeholder="usuario" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input id="password" name="password" type="password" placeholder="***********" required="" class="form-control rounded-pill border-0 shadow-sm px-4 ">
+                                </div>
+                                <div class="custom-control custom-checkbox mb-3">
+                                    <input id="customCheck1" type="checkbox" checked class="custom-control-input">
+                                </div>
+                                <input name="login" id="login" class="btn btn-danger btn-block text-uppercase mb-2 rounded-pill shadow-sm" type="submit" value="Entrar">
+                                <label class="col-md-12 mensaje">{{msg}}</label>                                
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- End -->
 
             </div>
-          </div>
-        </div>
-      </div>
+        </div><!-- End -->
 
     </div>
-  </main>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</div>
+
 </body>
 
 </html>

@@ -3,41 +3,35 @@
 {% load static %}
 
 {% block contenido %}
-
+<script>
+    function actualizar(asignatura) {
+        location.href = '/buscar/' + asignatura +'/';
+    }
+</script>
 <div class="container-fluid">
-    <!-- ============================================================== -->
-    <!-- Sales chart -->
-    <!-- ============================================================== -->
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Asignatura</h4>
-
-                    <form class="form-horizontal form-material " action="{% url 'MOD' %}" method="POST"
-                        onsubmit="return">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label class="col-12">nombre</label>
-                            <input type="text" class="col-12" name="nombre" id="nombre" value={{asignatura.nombre}}>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-12">profesor</label>
-                            <div class="col-12">
-                                <select class="form-control form-control-line " name="profesor" id="profesor">
-                                    {% for item in user %}
-                                    <option >{{item.username}}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                        <input type="submit" value="Actualizar" class="btn btn-dark">
-                    </form>
+                    <h4 class="card-title">Asignaturas</h4>
+                    <table class="table table-responsive-lg">
+                        <tr>
+                            <th>Profesor</th>
+                            <th>Asignatura</th>
+                            <th>Administrar asignatura</th>
+                        </tr>
+                        {% for item in asignatura %}
+                        <tr>
+                            <td>{{item.profesor}}</td>
+                            <td>{{item.nombre}}</td>
+                            <td><button class="btn btn-outline-danger" onclick="actualizar('{{item.nombre}}')">Cambiar Profesor</button>                                
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
                 </div>
             </div>
         </div>
-        
     </div>
-
 </div>
 {% endblock contenido %}

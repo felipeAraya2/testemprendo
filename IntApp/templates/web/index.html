@@ -7,38 +7,24 @@
     function actualizar(asignatura) {
         location.href = '/buscar/' + asignatura +'/';
     }
+    function eliminarV(nombre, asignatura) {
+        var msg;
+        var opcion = confirm("desea eliminar el video " + nombre + " "+ asignatura +"?");
+        if (opcion==true){
+            location.href = '/eliminar-video/'+ nombre + '/';
+        }else{
+            msg = "eliminación cancelada";
+            alert(msg);
+        }
+        
+    }
 </script>
+
 <div class="container-fluid">
     <!-- ============================================================== -->
     <!-- Sales chart -->
     <!-- ============================================================== -->
-    {% if user.is_superuser %}
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Profesores</h4>
-                        <table class="table table-responsive-lg">
-                            <tr>
-                                <th>Profesor</th>
-                                <th>Asignatura</th>
-                                <th>Administrar asignatura</th>
-                            </tr>
-                            {% for item in asignatura %}
-                            <tr>
-                                <td>{{item.profesor}}</td>
-                                <td>{{item.nombre}}</td>
-                                <td><button class="btn btn-outline-primary " onclick="actualizar('{{item.nombre}}')">Cambiar Profesor</button>
-                                
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endif %}
+    
 
     <div class="row">
         <div class="col-md-6">
@@ -95,23 +81,21 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">videos subidos</h4>
-
+                    <h6 class="text-danger">{{msgE}}</h6>
                     
                         {% for aux in mostrarvideo %}
-                            <label class="col-12 pt-2">{{aux.nombre}} - {{aux.asignatura}}</label>
+                            <div class="row col-12">
+                                <label class="col-9 pt-2">{{aux.nombre}} - {{aux.asignatura}}</label>
+                                <div class="btn-group col-3">
+                                    <input type="button" value="Eliminar" class="btn btn-danger " onclick="eliminarV('{{aux.nombre}}','{{aux.asignatura}}')">
+                                </div>
+                            </div>
+                            
                             <div class="col"> <iframe width="100%" height="auto" src="{{aux.video}}"
                                 title="YouTube video player" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen></iframe>
-                                <div class="row">
-                                    <div class="btn-group col-6">
-                                        <input type="submit" value="Actualizar" class=" btn btn-dark">
-                                    </div>
-                                    <div class="btn-group col-6">
-                                        <input type="submit" value="Eliminar" class=" btn btn-danger">
-                                    </div>
 
-                                </div>
                             </div>
                         {% endfor %}
                     

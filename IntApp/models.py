@@ -24,3 +24,4 @@ class Video(models.Model):
 
 
 # Create your models here.
+    
